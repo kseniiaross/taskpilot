@@ -15,13 +15,40 @@ Organize your workspaces, manage projects, and stay productive with an intuitive
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite)
 ![Context API](https://img.shields.io/badge/Context-API-blue)
 ![Vitest](https://img.shields.io/badge/Tested-Vitest-green)
-![License](https://img.shields.io/badge/License-MIT-success)
+[![CI](https://github.com/kseniiaross/taskpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/kseniiaross/taskpilot/actions/workflows/ci.yml)
+
 
 </p>
 
 <p align="center">
 <strong><a href="https://taskpilot1.vercel.app/">Live Demo</a></strong>
 </p>
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Project Highlights](#project-highlights)
+- [Preview](#preview)
+- [Core Features](#core-features)
+- [Calendar](#calendar)
+- [Analytics](#analytics)
+- [Authentication](#authentication)
+- [Profile](#profile)
+- [Settings](#settings)
+- [Application Architecture](#application-architecture)
+- [State Management](#state-management)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Testing](#testing)
+- [Installation](#installation)
+- [Available Scripts](#available-scripts)
+- [Responsive Design](#responsive-design)
+- [Code Quality](#code-quality)
+- [Known Limitations](#known-limitations)
+- [Future Improvements](#future-improvements)
+- [License](#license)
 
 ---
 
@@ -127,7 +154,6 @@ TaskPilot includes everything needed for everyday task planning.
 - Priority levels
 - Task descriptions
 
-
 ![Tasks](docs/screenshots/tasks.png)
 
 ---
@@ -147,7 +173,6 @@ The Dashboard combines task management and productivity tools into a single work
 
 ![Dashboard](docs/screenshots/dashboard.png)
 
-
 ---
 
 ## Drag & Drop
@@ -162,7 +187,6 @@ Features include:
 - Persistent task order (stored as an explicit `order` field, independent of creation order)
 
 > Reordering is only available while sorted by "Newest," since any other sort (priority, due date, alphabetical) determines card position by that criterion rather than manual order — the drag handle is hidden in those views to avoid a control that wouldn't visibly do anything.
-
 
 ![Drag and drop reordering](docs/screenshots/drag-drop.gif)
 
@@ -200,7 +224,6 @@ Instead of manually calculating progress, users can instantly see how much work 
 - Overall completion rate
 - Breakdown of tasks by category
 - Breakdown of tasks by priority
-
 
 ![Analytics](docs/screenshots/analytics.png)
 
@@ -421,6 +444,8 @@ The application includes unit tests covering the most important parts of the pro
 
 > Prefer to just try it? Use the [Live Demo](https://taskpilot1.vercel.app/) instead — no setup required.
 
+> Requires Node.js 18 or higher.
+
 ```bash
 git clone https://github.com/kseniiaross/taskpilot.git
 cd taskpilot
@@ -456,8 +481,7 @@ The interface automatically adapts for:
 - Tablet
 - Mobile
 
-
-![Responsive](docs/screenshots/responsive.png)
+![Responsive design](docs/screenshots/responsive.png)
 
 ---
 
@@ -476,6 +500,7 @@ The project follows modern frontend development practices.
 - Consistent styling via CSS variables
 - Unit testing
 - ESLint configuration, including accessibility linting (`jsx-a11y`)
+- Continuous Integration via GitHub Actions (lint, type check, tests, and build on every push)
 
 ---
 
@@ -500,6 +525,7 @@ This is a frontend-only portfolio project. A few tradeoffs were made intentional
 | Drag & Drop | dnd-kit |
 | Testing | Vitest, React Testing Library, Jest DOM |
 | Linting | ESLint, eslint-plugin-jsx-a11y |
+| CI/CD | GitHub Actions |
 
 ---
 
@@ -540,6 +566,7 @@ Key areas explored throughout the project include:
 - Form validation
 - Unit testing with Vitest
 - Reading and fixing real bugs with `tsc`, ESLint, and accessibility linting
+- Setting up Continuous Integration with GitHub Actions
 - Project organization
 - Scalable application structure
 
@@ -562,7 +589,6 @@ docs/
     ├── responsive.png
     └── drag-drop.gif
 ```
-
 ---
 
 # Author
