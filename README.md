@@ -71,9 +71,7 @@ This is a **frontend-only** project — there is no backend. All data (users, wo
 
 The Dashboard acts as the central workspace where users can quickly access active projects, manage tasks, monitor progress, and organize their daily workflow.
 
-```
-docs/screenshots/dashboard.png
-```
+![Dashboard](docs/screenshots/dashboard.png)
 
 ---
 
@@ -92,9 +90,7 @@ Separate different areas of work by creating independent workspaces. Tasks and p
 - Color customization
 - Independent workspace organization — tasks and projects created in one workspace are not visible from another
 
-```
-docs/screenshots/workspaces.png
-```
+![Workspaces](docs/screenshots/workspaces.png)
 
 ---
 
@@ -111,9 +107,7 @@ Projects help organize related tasks inside each workspace.
 - Project color labels
 - Progress tracking
 
-```
-docs/screenshots/projects.png
-```
+![Projects](docs/screenshots/projects.png)
 
 ---
 
@@ -133,9 +127,8 @@ TaskPilot includes everything needed for everyday task planning.
 - Priority levels
 - Task descriptions
 
-```
-docs/screenshots/tasks.png
-```
+
+![Tasks](docs/screenshots/tasks.png)
 
 ---
 
@@ -152,9 +145,8 @@ The Dashboard combines task management and productivity tools into a single work
 - Quick task creation
 - Drag & drop reordering (available when sorted by "Newest")
 
-```
-docs/screenshots/dashboard.png
-```
+![Dashboard](docs/screenshots/dashboard.png)
+
 
 ---
 
@@ -171,9 +163,8 @@ Features include:
 
 > Reordering is only available while sorted by "Newest," since any other sort (priority, due date, alphabetical) determines card position by that criterion rather than manual order — the drag handle is hidden in those views to avoid a control that wouldn't visibly do anything.
 
-```
-docs/screenshots/drag-drop.gif
-```
+
+![Drag and drop reordering](docs/screenshots/drag-drop.gif)
 
 ---
 
@@ -192,9 +183,7 @@ Instead of reviewing long task lists, users can quickly identify deadlines and b
 - Visual task indicators
 - Responsive calendar interface
 
-```
-docs/screenshots/calendar.png
-```
+![Calendar](docs/screenshots/calendar.png)
 
 ---
 
@@ -212,9 +201,8 @@ Instead of manually calculating progress, users can instantly see how much work 
 - Breakdown of tasks by category
 - Breakdown of tasks by priority
 
-```
-docs/screenshots/analytics.png
-```
+
+![Analytics](docs/screenshots/analytics.png)
 
 ---
 
@@ -245,9 +233,7 @@ Users can manage their personal account information from the Profile page.
 - Manage personal settings
 - Delete account with confirmation
 
-```
-docs/screenshots/profile.png
-```
+![Profile](docs/screenshots/profile.png)
 
 ---
 
@@ -260,9 +246,7 @@ The Settings page allows users to review workspace preferences and manage accoun
 - Workspace preferences overview
 - Log out
 
-```
-docs/screenshots/settings.png
-```
+![Settings](docs/screenshots/settings.png)
 
 ---
 
@@ -472,9 +456,8 @@ The interface automatically adapts for:
 - Tablet
 - Mobile
 
-```
-docs/screenshots/responsive.png
-```
+
+![Responsive](docs/screenshots/responsive.png)
 
 ---
 
