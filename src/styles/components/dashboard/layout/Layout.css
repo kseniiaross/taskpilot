@@ -1,0 +1,152 @@
+/* ==========================================================================
+   ROOT
+   ========================================================================== */
+
+.taskPilotDashboard{
+  min-height:100vh;
+  color:var(--text);
+  background:
+    radial-gradient(
+      circle at 8% 4%,
+      rgba(91,92,226,.08),
+      transparent 30rem
+    ),
+    var(--bg);
+}
+
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
+.dashboardLayout{
+  width:min(1560px,calc(100% - 32px));
+  margin:0 auto;
+  padding:0px 0 48px;
+  display:grid;
+  grid-template-columns:
+    clamp(200px,14vw,232px)
+    minmax(0,1fr);
+  gap:20px;
+  align-items:start;
+}
+
+.dashboardLayout--collapsed{
+  grid-template-columns:
+    84px
+    minmax(0,1fr);
+}
+
+/* ==========================================================================
+   CONTENT
+   ========================================================================== */
+
+.dashboardContent{
+  width:100%;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+/* ==========================================================================
+   1440
+   ========================================================================== */
+
+@media(max-width:1440px){
+
+  .dashboardLayout{
+    width:calc(100% - 28px);
+    grid-template-columns:
+      212px
+      minmax(0,1fr);
+    gap:18px;
+  }
+
+  .dashboardLayout--collapsed{
+    grid-template-columns:
+      80px
+      minmax(0,1fr);
+  }
+
+}
+
+/* ==========================================================================
+   1200
+   ========================================================================== */
+
+@media(max-width:1200px){
+
+  .dashboardLayout{
+    width:calc(100% - 24px);
+    grid-template-columns:
+      196px
+      minmax(0,1fr);
+    gap:16px;
+  }
+
+  .dashboardLayout--collapsed{
+    grid-template-columns:
+      72px
+      minmax(0,1fr);
+  }
+
+}
+
+/* ==========================================================================
+   992
+   ========================================================================== */
+
+@media(max-width:992px){
+
+  .dashboardLayout{
+    width:calc(100% - 20px);
+    grid-template-columns:
+      188px
+      minmax(0,1fr);
+    gap:14px;
+  }
+
+  .dashboardLayout--collapsed{
+    grid-template-columns:
+      68px
+      minmax(0,1fr);
+  }
+
+}
+
+/* ==========================================================================
+   768
+   ========================================================================== */
+
+@media(max-width:768px){
+
+  .dashboardLayout{
+    width:calc(100% - 24px);
+    padding:18px 0 40px;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .dashboardContent{
+    order:1;
+  }
+
+}
+
+/* ==========================================================================
+   480
+   ========================================================================== */
+
+@media(max-width:480px){
+
+  .dashboardLayout{
+    width:calc(100% - 16px);
+    padding-bottom:32px;
+  }
+
+  .dashboardContent{
+    gap:22px;
+  }
+
+}

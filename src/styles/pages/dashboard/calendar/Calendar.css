@@ -1,0 +1,266 @@
+/* =========================================================================
+   CALENDAR
+   ========================================================================= */
+.dashboardCalendar{
+  min-width:0;
+}
+.dashboardCalendar__pageHeader{
+  min-height:108px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+  margin-bottom:20px;
+}
+.dashboardCalendar__eyebrow{
+  display:block;
+  margin-bottom:9px;
+  color:var(--primary);
+  font-size:10.5px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.dashboardCalendar__pageHeader h1{
+  margin:0;
+  color:var(--text);
+  font-size:clamp(2.25rem,4vw,3.55rem);
+  line-height:1;
+  letter-spacing:-.055em;
+}
+.dashboardCalendar__pageHeader p{
+  max-width:580px;
+  margin:14px 0 0;
+  color:var(--text-light);
+  font-size:14px;
+  line-height:1.65;
+}
+.dashboardCalendar__container{
+  width:100%;
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+.dashboardCalendar__header{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:0 22px;
+  border-bottom:1px solid var(--border);
+}
+.dashboardCalendar__header h2{
+  margin:0;
+  color:var(--text);
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:-.035em;
+}
+.dashboardCalendar__actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.dashboardCalendar__actions button{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--border);
+  border-radius:11px;
+  background:var(--surface);
+  color:var(--text-light);
+  cursor:pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+.dashboardCalendar__actions button:hover{
+  background:#f5f6ff;
+  color:var(--primary);
+  transform:translateY(-1px);
+}
+.dashboardCalendar__actions svg{
+  width:17px;
+  height:17px;
+}
+.dashboardCalendar__today{
+  width:auto!important;
+  padding:0 14px!important;
+  font-size:11px;
+  font-weight:700;
+}
+.dashboardCalendar__body{
+  width:100%;
+}
+.dashboardCalendar__weekdays{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  border-bottom:1px solid var(--border);
+  background:#fafbfe;
+}
+.dashboardCalendar__weekdays span{
+  padding:12px 8px;
+  color:var(--text-light);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-align:center;
+  text-transform:uppercase;
+}
+.dashboardCalendar__grid{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  grid-auto-rows:94px;
+}
+.dashboardCalendar__day{
+  min-width:0;
+  height:94px;
+  padding:7px;
+  border-right:1px solid rgba(20,23,36,.06);
+  border-bottom:1px solid rgba(20,23,36,.06);
+  transition:background var(--transition);
+}
+.dashboardCalendar__day:nth-child(7n){
+  border-right:none;
+}
+.dashboardCalendar__day--empty{
+  background:#fbfcfe;
+}
+.dashboardCalendar__day--today{
+  background:rgba(91,92,226,.035);
+}
+.dashboardCalendar__number{
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  color:#4f5669;
+  font-size:10px;
+  font-weight:700;
+}
+.dashboardCalendar__day--today .dashboardCalendar__number{
+  background:var(--primary);
+  color:#fff;
+}
+.dashboardCalendar__tasks{
+  display:grid;
+  gap:3px;
+  margin-top:6px;
+  overflow:hidden;
+}
+.dashboardCalendar__task{
+  overflow:hidden;
+  padding:4px 6px;
+  border-radius:6px;
+  background:rgba(91,92,226,.1);
+  color:var(--primary);
+  font-size:8px;
+  font-weight:700;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.dashboardCalendar__task--completed{
+  background:rgba(16,185,129,.1);
+  color:var(--success);
+}
+.dashboardCalendar__tasks small{
+  color:var(--text-light);
+  font-size:8px;
+}
+
+.dashboardCalendar__more{
+  display:block;
+  color:var(--text-light);
+  font-size:8px;
+  font-weight:700;
+  padding-left:2px;
+}
+/* =========================================================================
+   1400
+   ========================================================================= */
+@media(max-width:1400px){
+  .dashboardCalendar__pageHeader{
+    margin-bottom:18px;
+  }
+  .dashboardCalendar__grid{
+    grid-auto-rows:88px;
+  }
+  .dashboardCalendar__day{
+    height:88px;
+    padding:6px;
+  }
+}
+/* =========================================================================
+   1200
+   ========================================================================= */
+@media(max-width:1200px){
+  .dashboardCalendar__pageHeader{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+  }
+  .dashboardCalendar__header{
+    flex-wrap:wrap;
+    padding:16px 20px;
+  }
+  .dashboardCalendar__grid{
+    grid-auto-rows:82px;
+  }
+  .dashboardCalendar__day{
+    height:82px;
+    padding:6px;
+  }
+}
+/* =========================================================================
+   768
+   ========================================================================= */
+@media(max-width:768px){
+  .dashboardCalendar__pageHeader{
+    min-height:auto;
+    margin-bottom:20px;
+  }
+  .dashboardCalendar__pageHeader h1{
+    font-size:clamp(2rem,8vw,2.6rem);
+  }
+  .dashboardCalendar__pageHeader p{
+    font-size:13px;
+  }
+  .dashboardCalendar__container{
+    overflow-x:auto;
+  }
+  .dashboardCalendar__body{
+    min-width:720px;
+  }
+  .dashboardCalendar__weekdays,
+  .dashboardCalendar__grid{
+    min-width:720px;
+  }
+}
+/* =========================================================================
+   480
+   ========================================================================= */
+@media(max-width:480px){
+  .dashboardCalendar__header{
+    padding:14px 16px;
+  }
+  .dashboardCalendar__header h2{
+    font-size:18px;
+  }
+  .dashboardCalendar__actions{
+    gap:6px;
+  }
+  .dashboardCalendar__actions button{
+    width:34px;
+    height:34px;
+  }
+  .dashboardCalendar__today{
+    padding:0 12px!important;
+    font-size:10px;
+  }
+}

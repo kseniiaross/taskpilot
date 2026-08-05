@@ -1,0 +1,240 @@
+/* =========================================================================
+   PROJECT DETAILS
+   ========================================================================= */
+
+.projectDetails{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+/* =========================================================================
+   HEADER
+   ========================================================================= */
+
+.projectDetails__header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.projectDetails__left{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.projectDetails__back{
+  width:max-content;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--text-light);
+  font-size:13px;
+  font-weight:600;
+  text-decoration:none;
+  transition:color .2s ease;
+}
+
+.projectDetails__back:hover{
+  color:var(--primary);
+}
+
+.projectDetails__back svg{
+  width:16px;
+  height:16px;
+}
+
+.projectDetails__eyebrow{
+  color:var(--primary);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.projectDetails__header h1{
+  margin:0;
+  color:var(--text);
+  font-size:clamp(2.8rem,4vw,4rem);
+  font-weight:800;
+  letter-spacing:-.06em;
+  line-height:1;
+}
+
+.projectDetails__header p{
+  max-width:620px;
+  margin:0;
+  color:var(--text-light);
+  font-size:15px;
+  line-height:1.6;
+}
+
+.projectDetails__button{
+  height:48px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:0 22px;
+  border:none;
+  border-radius:14px;
+  background:var(--primary);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:
+    transform .2s ease,
+    background .2s ease;
+}
+
+.projectDetails__button:hover{
+  background:var(--primary-hover);
+  transform:translateY(-2px);
+}
+
+.projectDetails__button svg{
+  width:18px;
+  height:18px;
+}
+/* =========================================================================
+   PROGRESS
+   ========================================================================= */
+
+.projectDetails__progress{
+  padding:14px 20px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+.projectDetails__progressHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+
+.projectDetails__progressHeader div{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.projectDetails__progressHeader strong{
+  color:var(--text);
+  font-size:16px;
+  font-weight:800;
+}
+
+.projectDetails__progressHeader span{
+  color:var(--text-light);
+  font-size:12px;
+}
+
+.projectDetails__progressBar{
+  width:100%;
+  height:6px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#edf0f8;
+}
+
+.projectDetails__progressFill{
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg,#5b5ce2,#7a7bf4);
+  transition:width .3s ease;
+}
+/* =========================================================================
+   EMPTY
+   ========================================================================= */
+
+.projectDetails__empty{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  padding:80px 40px;
+  border:1px dashed var(--border);
+  border-radius:22px;
+  background:#fff;
+}
+
+.projectDetails__emptyIcon{
+  width:72px;
+  height:72px;
+  display:grid;
+  place-items:center;
+  border-radius:20px;
+  background:rgba(91,92,226,.08);
+  color:var(--primary);
+}
+
+.projectDetails__emptyIcon svg{
+  width:30px;
+  height:30px;
+}
+
+.projectDetails__empty h2{
+  margin:0;
+  color:var(--text);
+  font-size:22px;
+  font-weight:800;
+}
+
+.projectDetails__empty p{
+  max-width:420px;
+  margin:0;
+  color:var(--text-light);
+  font-size:14px;
+  line-height:1.7;
+  text-align:center;
+}
+/* =========================================================================
+   TASKS
+   ========================================================================= */
+
+.projectDetails__tasks{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+  align-items:start;
+}
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media(max-width:900px){
+  .projectDetails__header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .projectDetails__tasks{
+    grid-template-columns:1fr;
+  }
+
+  .projectDetails__button{
+    width:100%;
+  }
+}
+
+@media(max-width:600px){
+  .projectDetails{
+    gap:12px;
+  }
+
+  .projectDetails__progress{
+    padding:14px;
+  }
+
+  .projectDetails__empty{
+    padding:60px 24px;
+  }
+}

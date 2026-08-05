@@ -1,0 +1,263 @@
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
+
+.dashboardSidebar{
+  position:sticky;
+  top:24px;
+  align-self:start;
+  width:100%;
+  height:fit-content;
+  padding:24px 18px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:var(--shadow);
+  overflow:visible;
+}
+
+/* ==========================================================================
+   TOGGLE
+   ========================================================================== */
+
+.dashboardSidebar__toggle{
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 0 16px;
+  padding:0;
+  border:none;
+  border-radius:50%;
+  background:transparent;
+  color:var(--primary);
+  cursor:pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.dashboardSidebar__toggle:hover{
+  background:#f3f2ff;
+  transform:translateX(-2px);
+}
+
+.dashboardSidebar__toggle:focus-visible{
+  outline:3px solid rgba(91,92,226,.22);
+  outline-offset:2px;
+}
+
+.dashboardSidebar__toggle svg{
+  width:19px;
+  height:19px;
+  stroke-width:2.4;
+}
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+
+.dashboardSidebar__nav{
+  display:flex;
+  flex-direction:column;
+}
+
+.dashboardSidebar__title{
+  margin:14px 10px 8px;
+  color:var(--text-light);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.dashboardSidebar__divider{
+  height:1px;
+  margin:14px 2px;
+  background:var(--border);
+}
+
+/* ==========================================================================
+   LINKS
+   ========================================================================== */
+
+.dashboardSidebar__link{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:42px;
+  padding:0 12px;
+  border-radius:12px;
+  color:var(--text-light);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.dashboardSidebar__link svg{
+  flex-shrink:0;
+  width:17px;
+  height:17px;
+  stroke-width:2;
+}
+
+.dashboardSidebar__link:hover{
+  background:#f7f8fc;
+  color:var(--primary);
+  transform:translateX(2px);
+}
+
+.dashboardSidebar__link:focus-visible{
+  outline:3px solid rgba(91,92,226,.22);
+  outline-offset:2px;
+}
+
+.dashboardSidebar__link.active{
+  background:#eef0ff;
+  color:var(--primary);
+  font-weight:700;
+}
+
+.dashboardSidebar__link.active::before{
+  content:"";
+  position:absolute;
+  left:-18px;
+  top:7px;
+  bottom:7px;
+  width:4px;
+  border-radius:999px;
+  background:var(--primary);
+}
+
+/* ==========================================================================
+   COLLAPSED
+   ========================================================================== */
+
+.dashboardSidebar--collapsed{
+  width:100%;
+  padding:18px 10px;
+}
+
+.dashboardSidebar--collapsed .dashboardSidebar__title{
+  display:none;
+}
+
+.dashboardSidebar--collapsed .dashboardSidebar__divider{
+  margin:14px 0;
+}
+
+.dashboardSidebar--collapsed .dashboardSidebar__link{
+  justify-content:center;
+  padding:0;
+}
+
+.dashboardSidebar--collapsed .dashboardSidebar__link span{
+  display:none;
+}
+
+.dashboardSidebar--collapsed .dashboardSidebar__link.active::before{
+  left:-10px;
+}
+
+/* ==========================================================================
+   1400
+   ========================================================================== */
+
+@media(max-width:1400px){
+
+ .dashboardSidebar{
+    padding:20px 16px;
+    border-radius:20px;
+  }
+
+  .dashboardSidebar__toggle{
+    margin-bottom:16px;
+  }
+
+  .dashboardSidebar__title{
+    margin:13px 9px 7px;
+    font-size:9px;
+  }
+
+  .dashboardSidebar__divider{
+    margin:13px 0;
+  }
+
+  .dashboardSidebar__link{
+    min-height:42px;
+    padding:0 11px;
+    gap:9px;
+    font-size:13px;
+  }
+
+  .dashboardSidebar__link svg{
+    width:16px;
+    height:16px;
+  }
+
+}
+
+/* ==========================================================================
+   768
+   ========================================================================== */
+
+@media(max-width:768px){
+
+  .dashboardSidebar{
+    position:static;
+    width:100%;
+    padding:22px;
+  }
+
+  .dashboardSidebar--collapsed{
+    width:100%;
+    padding:22px;
+  }
+
+  .dashboardSidebar--collapsed .dashboardSidebar__title,
+  .dashboardSidebar--collapsed .dashboardSidebar__link span{
+    display:block;
+  }
+
+  .dashboardSidebar--collapsed .dashboardSidebar__link{
+    justify-content:flex-start;
+    padding:0 18px;
+  }
+
+  .dashboardSidebar--collapsed .dashboardSidebar__link.active::before{
+    left:-20px;
+  }
+
+}
+
+/* ==========================================================================
+   480
+   ========================================================================== */
+
+@media(max-width:480px){
+
+  .dashboardSidebar{
+    padding:18px;
+  }
+
+  .dashboardSidebar__link{
+    min-height:44px;
+    padding:0 14px;
+    font-size:13px;
+  }
+
+  .dashboardSidebar__link svg{
+    width:18px;
+    height:18px;
+  }
+
+}

@@ -1,0 +1,231 @@
+/* =========================================================================
+   PROJECTS
+   ========================================================================= */
+
+.dashboardProjects{
+  min-width:0;
+}
+
+/* =========================================================================
+   HEADER
+   ========================================================================= */
+
+.dashboardProjects__header{
+  min-height:108px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+  margin-bottom:24px;
+}
+
+.dashboardProjects__eyebrow{
+  display:block;
+  margin-bottom:9px;
+  color:var(--primary);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.dashboardProjects__header h1{
+  margin:0;
+  color:var(--text);
+  font-size:clamp(2.3rem,4vw,3.5rem);
+  font-weight:800;
+  line-height:1;
+  letter-spacing:-.06em;
+}
+
+.dashboardProjects__header p{
+  max-width:580px;
+  margin:14px 0 0;
+  color:var(--text-light);
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* =========================================================================
+   CREATE BUTTON
+   ========================================================================= */
+
+.dashboardProjects__primaryButton{
+  height:46px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:0 20px;
+  border:none;
+  border-radius:13px;
+  background:var(--primary);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:
+    background .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.dashboardProjects__primaryButton:hover{
+  background:var(--primary-hover);
+  transform:translateY(-2px);
+}
+
+.dashboardProjects__primaryButton:active{
+  transform:translateY(0);
+}
+
+.dashboardProjects__primaryButton:focus-visible{
+  outline:3px solid rgba(91,92,226,.25);
+  outline-offset:3px;
+}
+
+.dashboardProjects__primaryButton svg{
+  width:17px;
+  height:17px;
+}
+
+/* =========================================================================
+   PROJECT CONTAINER
+
+   No min-height — the container should hug whatever the grid inside
+   actually measures out to, not force a fixed floor that leaves empty
+   space once cards are sized to their own content.
+   ========================================================================= */
+
+.dashboardProjects__card{
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+
+/* =========================================================================
+   EMPTY STATE
+
+   min-height kept here on purpose: with no cards to size against, the
+   empty-state icon/text/button need a floor so they don't collapse
+   into a cramped, tiny block.
+   ========================================================================= */
+
+.dashboardProjects__empty{
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:36px;
+  text-align:center;
+}
+
+.dashboardProjects__emptyIcon{
+  width:56px;
+  height:56px;
+  display:grid;
+  place-items:center;
+  margin-bottom:18px;
+  border-radius:17px;
+  background:rgba(91,92,226,.1);
+  color:var(--primary);
+}
+
+.dashboardProjects__emptyIcon svg{
+  width:24px;
+  height:24px;
+}
+
+.dashboardProjects__empty h2{
+  margin:0;
+  color:var(--text);
+  font-size:21px;
+  font-weight:700;
+}
+
+.dashboardProjects__empty p{
+  max-width:380px;
+  margin:10px 0 0;
+  color:var(--text-light);
+  font-size:13px;
+  line-height:1.6;
+}
+
+/* =========================================================================
+   PROJECT GRID
+
+   4 columns instead of 3 — cards are sized down to compensate (see
+   ProjectCard.css), so the row stays visually balanced rather than
+   just cramming the old card width into a narrower column.
+
+   align-items:start overrides the grid default (stretch), so each
+   card is only as tall as its own content — a project with a longer
+   description no longer forces every other card in the row to match
+   its height with empty space at the bottom. No min-height here for
+   the same reason as .dashboardProjects__card above.
+   ========================================================================= */
+
+.dashboardProjects__grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  align-items:start;
+  gap:20px;
+  padding:28px;
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media(max-width:1400px){
+  .dashboardProjects__grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+
+@media(max-width:1200px){
+  .dashboardProjects__header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+  }
+}
+
+@media(max-width:1100px){
+  .dashboardProjects__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:768px){
+  .dashboardProjects__header{
+    min-height:auto;
+  }
+
+  .dashboardProjects__primaryButton{
+    width:100%;
+  }
+
+  .dashboardProjects__empty{
+    min-height:340px;
+  }
+
+  .dashboardProjects__grid{
+    grid-template-columns:1fr;
+    padding:20px;
+  }
+}
+
+@media(max-width:480px){
+  .dashboardProjects__header{
+    margin-bottom:20px;
+  }
+
+  .dashboardProjects__grid{
+    padding:16px;
+  }
+}

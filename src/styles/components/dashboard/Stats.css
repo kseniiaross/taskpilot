@@ -1,0 +1,340 @@
+/* =========================================================================
+   WELCOME HEADER
+   ========================================================================= */
+
+.dashboardWelcome{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:8px;
+}
+
+.dashboardWelcome>div{
+  flex:1;
+  min-width:0;
+}
+
+.dashboardWelcome__eyebrow,
+.dashboardToolbar__eyebrow,
+.taskModal__eyebrow{
+  display:block;
+  margin-bottom:8px;
+  color:var(--primary);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.dashboardWelcome h1{
+  margin:0;
+  color:var(--text);
+  font-size:clamp(2.3rem,4vw,3.6rem);
+  line-height:1;
+  letter-spacing:-.06em;
+}
+
+.dashboardWelcome p{
+  max-width:600px;
+  margin:12px 0 0;
+  color:var(--text-light);
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* =========================================================================
+   PRIMARY BUTTON (e.g. "New Task")
+   ========================================================================= */
+
+.dashboardPrimaryButton{
+  min-height:46px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:0 20px;
+  border:none;
+  border-radius:14px;
+  background:var(--primary);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.dashboardPrimaryButton:hover{
+  transform:translateY(-2px);
+  background:var(--primary-hover);
+}
+
+.dashboardPrimaryButton:focus-visible{
+  outline:3px solid rgba(91,92,226,.24);
+  outline-offset:3px;
+}
+
+/* =========================================================================
+   STATS GRID (4 cards: Total / Active / Completed / Due Today)
+   ========================================================================= */
+
+.dashboardStats{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+  margin:6px 0 12px;
+}
+
+/*
+  Each stat card uses a 2-row grid with named areas instead of the
+  old top-to-bottom stack (icon, then value, then label, then detail).
+  Layout, left to right / top to bottom:
+
+    [icon]  [label]        [   .   ]
+    [icon]  [detail text]  [ value ]
+
+  This keeps the icon and label on one compact line at the top, and
+  puts the big number in the bottom-right corner instead of taking up
+  its own large row — makes each card noticeably shorter overall.
+*/
+.dashboardStatCard{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  grid-template-rows:auto auto;
+  align-items:center;
+  column-gap:12px;
+  grid-template-areas:
+    "icon label ."
+    "icon detail value";
+  min-height:auto;
+  overflow:hidden;
+  padding:16px 18px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg,18px);
+  background:var(--surface);
+  box-shadow:var(--shadow);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.dashboardStatCard:hover{
+  transform:translateY(-3px);
+  border-color:rgba(91,92,226,.18);
+  box-shadow:0 18px 34px rgba(15,23,42,.08);
+}
+
+/* Icon spans both rows on the left, like a small badge next to the text. */
+.dashboardStatCard__top{
+  grid-area:icon;
+  align-self:start;
+  margin-bottom:0;
+}
+
+.dashboardStatCard__icon{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:#f2f4f8;
+  color:var(--text);
+  font-size:12px;
+  font-weight:800;
+}
+
+.dashboardStatCard--primary .dashboardStatCard__icon{
+  background:rgba(91,92,226,.1);
+  color:var(--primary);
+}
+
+.dashboardStatCard--success .dashboardStatCard__icon{
+  background:rgba(16,185,129,.1);
+  color:var(--success);
+}
+
+.dashboardStatCard--warning .dashboardStatCard__icon{
+  background:rgba(255,159,26,.12);
+  color:#c67600;
+}
+
+/* The big number now lives alone in the bottom-right corner and is
+   smaller than before (20px vs. the original 28px), since it no longer
+   needs to dominate its own row. */
+.dashboardStatCard__value{
+  grid-area:value;
+  justify-self:end;
+  align-self:end;
+  color:var(--text);
+  font-size:20px;
+  font-weight:800;
+  line-height:1;
+  letter-spacing:-.02em;
+}
+
+/* Sits directly to the right of the icon, same row. */
+.dashboardStatCard__label{
+  grid-area:label;
+  align-self:end;
+  margin-top:0;
+  color:var(--text);
+  font-size:12px;
+  font-weight:700;
+}
+
+/* Small supporting text under the label, left-aligned with it. */
+.dashboardStatCard__detail{
+  grid-area:detail;
+  align-self:start;
+  margin-top:2px;
+  color:var(--text-light);
+  font-size:10px;
+  line-height:1.4;
+}
+
+/* =========================================================================
+   1440
+   ========================================================================= */
+
+@media(max-width:1440px){
+  .dashboardWelcome{
+    gap:20px;
+    margin-bottom:6px;
+  }
+  .dashboardWelcome h1{
+    font-size:clamp(2.6rem,3.5vw,3.2rem);
+  }
+  .dashboardWelcome p{
+    max-width:540px;
+  }
+  .dashboardPrimaryButton{
+    flex-shrink:0;
+    min-width:155px;
+  }
+  .dashboardStats{
+    gap:12px;
+    margin:4px 0 10px;
+  }
+  .dashboardStatCard{
+    padding:14px 16px;
+  }
+  .dashboardStatCard__icon{
+    width:28px;
+    height:28px;
+  }
+  .dashboardStatCard__value{
+    font-size:18px;
+  }
+  .dashboardStatCard__label{
+    font-size:11px;
+  }
+  .dashboardStatCard__detail{
+    font-size:10px;
+  }
+}
+
+/* =========================================================================
+   1200
+   ========================================================================= */
+
+@media(max-width:1200px){
+  .dashboardWelcome{
+    gap:18px;
+    margin-bottom:4px;
+  }
+  .dashboardWelcome h1{
+    font-size:clamp(2.2rem,3vw,2.8rem);
+  }
+  .dashboardWelcome p{
+    max-width:460px;
+    font-size:13px;
+  }
+  .dashboardPrimaryButton{
+    min-height:44px;
+    padding:0 18px;
+    font-size:12px;
+  }
+  .dashboardStats{
+    gap:10px;
+    margin:2px 0 8px;
+  }
+  .dashboardStatCard{
+    padding:12px 14px;
+  }
+  .dashboardStatCard__icon{
+    width:26px;
+    height:26px;
+  }
+  .dashboardStatCard__value{
+    font-size:17px;
+  }
+  .dashboardStatCard__label{
+    font-size:10px;
+  }
+  .dashboardStatCard__detail{
+    font-size:9px;
+  }
+}
+
+/* =========================================================================
+   992 — stats collapse to a 2x2 grid
+   ========================================================================= */
+
+@media(max-width:992px){
+  .dashboardWelcome{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .dashboardPrimaryButton{
+    margin-top:10px;
+  }
+  .dashboardStats{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+/* =========================================================================
+   768
+   ========================================================================= */
+
+@media(max-width:768px){
+  .dashboardWelcome{
+    gap:18px;
+    margin-bottom:20px;
+  }
+  .dashboardWelcome h1{
+    font-size:2.4rem;
+  }
+  .dashboardStats{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .dashboardStatCard{
+    padding:16px;
+  }
+}
+
+/* =========================================================================
+   480 — stats stack to a single column
+   ========================================================================= */
+
+@media(max-width:480px){
+  .dashboardStats{
+    grid-template-columns:1fr;
+  }
+  .dashboardWelcome h1{
+    font-size:2rem;
+  }
+  .dashboardWelcome p{
+    font-size:13px;
+  }
+  .dashboardPrimaryButton{
+    width:100%;
+  }
+}

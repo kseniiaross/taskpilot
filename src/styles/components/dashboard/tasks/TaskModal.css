@@ -1,0 +1,279 @@
+/* =========================================================================
+   TASK MODAL
+   ========================================================================= */
+
+.modalOpen{
+  overflow:hidden;
+}
+
+.taskModalOverlay{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(16,22,40,.55);
+  backdrop-filter:blur(10px);
+  animation:taskModalFade .2s ease;
+}
+
+.taskModal{
+  width:min(640px,100%);
+  max-height:calc(100vh - 40px);
+  padding:28px;
+  overflow:hidden;
+  border-radius:26px;
+  background:var(--surface);
+  box-shadow:0 30px 90px rgba(15,23,42,.25);
+  animation:taskModalEnter .2s ease;
+}
+
+/* =========================================================================
+   HEADER
+   ========================================================================= */
+
+.taskModal__header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--border);
+}
+
+.taskModal__heading{
+  min-width:0;
+}
+
+.taskModal__eyebrow{
+  display:inline-flex;
+  color:var(--primary);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.taskModal__header h2{
+  margin:6px 0 8px;
+  color:var(--text);
+  font-size:28px;
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:-.04em;
+}
+
+.taskModal__header p{
+  margin:0;
+  color:var(--text-light);
+  font-size:14px;
+  line-height:1.5;
+}
+
+.taskModal__close{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  border:none;
+  border-radius:12px;
+  background:#f4f5fb;
+  color:var(--text);
+  cursor:pointer;
+}
+
+.taskModal__close span{
+  font-size:24px;
+}
+
+/* =========================================================================
+   FORM
+   ========================================================================= */
+
+.taskModal__form{
+  display:grid;
+  gap:16px;
+  margin-top:20px;
+}
+
+.taskModalGrid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.taskModalField{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.taskModalField span{
+  color:var(--text);
+  font-size:12px;
+  font-weight:700;
+}
+
+.taskModalField strong{
+  color:var(--danger);
+}
+
+.taskModalField input,
+.taskModalField textarea,
+.taskModalField select{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:13px;
+  background:#f8f9fc;
+  color:var(--text);
+  font-size:14px;
+}
+
+.taskModalField input,
+.taskModalField select{
+  height:44px;
+  padding:0 14px;
+}
+
+.taskModalField textarea{
+  min-height:90px;
+  padding:12px 14px;
+  resize:none;
+}
+
+.taskModalField input:focus,
+.taskModalField textarea:focus,
+.taskModalField select:focus{
+  outline:none;
+  border-color:var(--primary);
+  background:#fff;
+  box-shadow:0 0 0 4px rgba(91,92,226,.1);
+}
+
+.taskModalField small{
+  align-self:flex-end;
+  color:var(--text-light);
+  font-size:10px;
+}
+
+/* =========================================================================
+   ACTIONS
+   ========================================================================= */
+
+.taskModal__actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
+  margin-top:8px;
+  padding-top:16px;
+  border-top:1px solid var(--border);
+}
+
+.taskModal__cancel,
+.taskModal__submit{
+  min-height:44px;
+  padding:0 20px;
+  border-radius:13px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.taskModal__cancel{
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+}
+
+.taskModal__submit{
+  border:none;
+  background:var(--primary);
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media(max-width:992px){
+
+  .taskModal{
+    padding:24px;
+  }
+
+  .taskModalGrid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .taskModalOverlay{
+    padding:12px;
+  }
+
+  .taskModal{
+    max-height:calc(100vh - 24px);
+    padding:20px;
+    border-radius:22px;
+  }
+
+  .taskModal__header{
+    flex-direction:column;
+  }
+
+  .taskModal__close{
+    position:absolute;
+    top:28px;
+    right:28px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .taskModal__actions{
+    flex-direction:column-reverse;
+  }
+
+  .taskModal__cancel,
+  .taskModal__submit{
+    width:100%;
+  }
+
+}
+
+/* =========================================================================
+   ANIMATIONS
+   ========================================================================= */
+
+@keyframes taskModalFade{
+
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:1;
+  }
+
+}
+
+@keyframes taskModalEnter{
+
+  from{
+    opacity:0;
+    transform:translateY(12px) scale(.98);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+
+}

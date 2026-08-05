@@ -1,0 +1,243 @@
+/* =========================================================================
+   PROJECT CARD
+
+   Sized down from the original 3-column version to fit 4-across
+   without feeling cramped: smaller icon, tighter spacing, smaller
+   type scale.
+
+   The description reserves a fixed height for up to 5 lines
+   (line-clamp:5 + a matching min-height), so every card in a row
+   ends up the same height regardless of how long each project's
+   description actually is — a 1-line description doesn't produce a
+   shorter card than a 5-line one.
+   ========================================================================= */
+
+.projectCard{
+  display:flex;
+  flex-direction:column;
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 12px 34px rgba(15,23,42,.06);
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.projectCard:hover{
+  transform:translateY(-6px);
+  border-color:rgba(91,92,226,.22);
+  box-shadow:0 24px 56px rgba(15,23,42,.1);
+}
+
+/* =========================================================================
+   TOP
+   ========================================================================= */
+
+.projectCard__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.projectCard__icon{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  color:#fff;
+}
+
+.projectCard__icon svg{
+  width:20px;
+  height:20px;
+}
+
+.projectCard__percent{
+  color:var(--primary);
+  font-size:13px;
+  font-weight:700;
+}
+
+/* =========================================================================
+   CONTENT
+   ========================================================================= */
+
+.projectCard__content{
+  margin-bottom:16px;
+}
+
+.projectCard__content h3{
+  margin:0;
+  color:var(--text);
+  font-size:17px;
+  font-weight:800;
+  line-height:1.25;
+  letter-spacing:-.03em;
+}
+
+/*
+  line-clamp:5 caps how many lines a long description can take, and
+  min-height reserves that same space (5 lines * 1.5 line-height *
+  12.5px font-size ≈ 94px) even when the actual text is shorter — so
+  card height stays consistent across a row without relying on grid
+  stretch or JS measurement.
+*/
+.projectCard__content p{
+  margin:8px 0 0;
+  min-height:94px;
+  overflow:hidden;
+  color:var(--text-light);
+  font-size:12.5px;
+  line-height:1.5;
+  display:-webkit-box;
+  line-clamp:5;
+  -webkit-line-clamp:5;
+  -webkit-box-orient:vertical;
+}
+
+/* =========================================================================
+   STATS
+   ========================================================================= */
+
+.projectCard__stats{
+  display:flex;
+  gap:18px;
+  margin-bottom:16px;
+}
+
+.projectCard__stat{
+  display:flex;
+  flex-direction:column;
+}
+
+.projectCard__stat strong{
+  color:var(--text);
+  font-size:19px;
+  font-weight:800;
+  line-height:1;
+}
+
+.projectCard__stat span{
+  margin-top:5px;
+  color:var(--text-light);
+  font-size:10.5px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+}
+
+/* =========================================================================
+   PROGRESS
+   ========================================================================= */
+
+.projectCard__progress{
+  width:100%;
+  height:6px;
+  overflow:hidden;
+  margin-bottom:18px;
+  border-radius:999px;
+  background:#eceef6;
+}
+
+.projectCard__progressFill{
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(
+    90deg,
+    var(--primary),
+    #7a7cff
+  );
+  transition:width .35s ease;
+}
+
+/* =========================================================================
+   BUTTON
+   ========================================================================= */
+
+.projectCard__button{
+  width:100%;
+  height:40px;
+  margin-top:18px;
+  border:none;
+  border-radius:11px;
+  background:var(--primary);
+  color:#fff;
+  font-size:12.5px;
+  font-weight:700;
+  cursor:pointer;
+  transition:
+    transform .2s ease,
+    background .2s ease;
+}
+
+.projectCard__button:hover{
+  background:var(--primary-hover);
+  transform:translateY(-2px);
+}
+
+.projectCard__button:focus-visible{
+  outline:3px solid rgba(91,92,226,.22);
+  outline-offset:3px;
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media(max-width:1400px){
+  .projectCard{
+    padding:24px;
+  }
+
+  .projectCard__icon{
+    width:52px;
+    height:52px;
+  }
+
+  .projectCard__icon svg{
+    width:24px;
+    height:24px;
+  }
+
+  .projectCard__content h3{
+    font-size:20px;
+  }
+
+  .projectCard__content p{
+    font-size:13.5px;
+    min-height:102px;
+  }
+
+  .projectCard__stat strong{
+    font-size:22px;
+  }
+}
+
+@media(max-width:768px){
+  .projectCard{
+    padding:22px;
+  }
+
+  .projectCard__stats{
+    gap:22px;
+  }
+
+  .projectCard__content h3{
+    font-size:20px;
+  }
+}
+
+@media(max-width:480px){
+  .projectCard{
+    padding:20px;
+  }
+
+  .projectCard__button{
+    height:42px;
+  }
+}

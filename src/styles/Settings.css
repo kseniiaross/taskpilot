@@ -1,0 +1,83 @@
+/* =========================================================================
+   SETTINGS PAGE — PAGE-SPECIFIC STYLES
+
+   Shared layout (.profilePage, .profileContainer, .profileHeader,
+   .profileCard, .profileRow, .profileBackButton) lives in
+   ProfileLayout.css.
+   ========================================================================= */
+
+.profileContent {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================================
+   DANGER ZONE
+   ========================================================================= */
+
+.profileDangerZone {
+  margin-top: 42px;
+  padding: 28px;
+  border: 1px solid rgba(239, 68, 68, .18);
+  border-radius: calc(var(--radius-lg) + 2px);
+  background: rgba(239, 68, 68, .05);
+}
+
+.profileDangerZone h3 {
+  margin: 0 0 10px;
+  color: var(--danger);
+  font-size: 20px;
+}
+
+.profileDangerZone p {
+  margin: 0 0 22px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.profileDangerButton {
+  min-height: 46px;
+  padding: 0 22px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--danger);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.profileDangerButton:hover {
+  background: #d73737;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(239, 68, 68, .25);
+}
+
+.profileDangerButton:active {
+  transform: translateY(0);
+}
+
+.profileDangerButton:focus-visible {
+  outline: 3px solid rgba(239, 68, 68, .22);
+  outline-offset: 3px;
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media (max-width: 768px) {
+  .profileDangerButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileDangerZone {
+    padding: 22px;
+  }
+}

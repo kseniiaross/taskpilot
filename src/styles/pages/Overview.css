@@ -1,0 +1,182 @@
+/* =========================================================================
+   OVERVIEW
+
+   The welcome header and stats above the task grid intentionally take
+   up as little vertical space as the design allows, so more of the
+   viewport height is left for the task grid itself — the goal being
+   one full row of task cards visible before scrolling on typical
+   laptop-height screens.
+   ========================================================================= */
+
+.dashboardOverview{
+  min-width:0;
+}
+
+.dashboardOverview__welcome{
+  min-height:64px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:4px;
+}
+
+.dashboardOverview__eyebrow{
+  display:block;
+  margin-bottom:4px;
+  color:var(--primary);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.dashboardOverview__welcome h1{
+  margin:0;
+  color:var(--text);
+  font-size:clamp(1.9rem,3vw,2.6rem);
+  line-height:1;
+  letter-spacing:-.05em;
+}
+
+.dashboardOverview__welcome p{
+  max-width:560px;
+  margin:6px 0 0;
+  color:var(--text-light);
+  font-size:13px;
+  line-height:1.5;
+}
+
+.dashboardOverview__primaryButton{
+  min-height:42px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:0 18px;
+  border:none;
+  border-radius:13px;
+  background:var(--primary);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:
+    background var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+@media(hover:hover){
+
+  .dashboardOverview__primaryButton:hover{
+    background:var(--primary-hover);
+    transform:translateY(-2px);
+  }
+
+}
+
+.dashboardOverview__primaryButton:focus-visible{
+  outline:2px solid var(--primary);
+  outline-offset:2px;
+}
+
+.dashboardOverview__primaryButton svg{
+  width:17px;
+  height:17px;
+}
+
+.dashboardOverview__workspace{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* =========================================================================
+   1440
+   ========================================================================= */
+
+@media(max-width:1440px){
+
+  .dashboardOverview__welcome{
+    min-height:60px;
+    gap:20px;
+  }
+
+  .dashboardOverview__welcome h1{
+    font-size:clamp(1.8rem,2.6vw,2.3rem);
+  }
+
+  .dashboardOverview__welcome p{
+    max-width:520px;
+  }
+
+}
+
+/* =========================================================================
+   1200
+   ========================================================================= */
+
+@media(max-width:1200px){
+
+  .dashboardOverview__welcome{
+    min-height:auto;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:6px;
+  }
+
+  .dashboardOverview__welcome h1{
+    font-size:clamp(1.8rem,2.6vw,2.2rem);
+  }
+
+  .dashboardOverview__welcome p{
+    max-width:480px;
+    font-size:13px;
+  }
+
+  .dashboardOverview__primaryButton{
+    min-height:42px;
+    padding:0 16px;
+    font-size:12px;
+  }
+
+}
+
+/* =========================================================================
+   768
+   ========================================================================= */
+
+@media(max-width:768px){
+
+  .dashboardOverview__welcome{
+    min-height:auto;
+    gap:16px;
+    margin-bottom:16px;
+  }
+
+  .dashboardOverview__welcome h1{
+    font-size:clamp(2rem,8vw,2.6rem);
+  }
+
+  .dashboardOverview__welcome p{
+    font-size:13px;
+  }
+
+  .dashboardOverview__workspace{
+    gap:14px;
+  }
+}
+
+/* =========================================================================
+   480
+   ========================================================================= */
+
+@media(max-width:480px){
+
+  .dashboardOverview__primaryButton{
+    width:100%;
+  }
+}

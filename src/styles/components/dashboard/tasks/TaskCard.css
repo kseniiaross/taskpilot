@@ -1,0 +1,447 @@
+/* =========================================================================
+   TASK CARD
+
+   min-height stays as a floor, but title/description are clamped
+   tightly (title to 2 lines, description to 2 lines) so a card's
+   real height doesn't balloon much past that floor just because a
+   narrower grid column caused extra text wrapping. Without this, the
+   same 3-column grid could produce noticeably taller cards on a
+   1600px-wide window than on a 1920px-wide one, purely from wrapping.
+
+   The due date now lives in the header (top-right, next to the drag
+   handle) instead of the footer meta row — this frees up the meta
+   row to hold only the project name, and keeps date/time visually
+   anchored near the card's other at-a-glance metadata (status,
+   category, priority) rather than buried at the bottom.
+   ========================================================================= */
+
+.taskCard{
+position:relative;
+display:flex;
+flex-direction:column;
+min-width:0;
+height:100%;
+min-height:280px;
+padding:26px;
+border:1px solid rgba(15,23,42,.08);
+border-radius:22px;
+background:#fff;
+box-shadow:0 10px 30px rgba(15,23,42,.05);
+transition:
+transform .25s ease,
+box-shadow .25s ease,
+border-color .25s ease;
+}
+
+.taskCard:hover{
+transform:translateY(-4px);
+border-color:rgba(91,92,226,.18);
+box-shadow:0 18px 40px rgba(15,23,42,.09);
+}
+
+.taskCard:focus-within{
+border-color:rgba(91,92,226,.22);
+box-shadow:
+0 0 0 4px rgba(91,92,226,.08),
+0 18px 40px rgba(15,23,42,.08);
+}
+
+.taskCard--compact{
+min-height:0;
+padding:20px;
+}
+
+.taskCard--completed{
+opacity:.9;
+background:#fcfcfd;
+}
+
+.taskCard--dragging{
+opacity:.92;
+z-index:100;
+box-shadow:0 24px 48px rgba(15,23,42,.18);
+}
+
+.taskCard__header{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:14px;
+}
+
+/* Groups the due-date text and drag handle together in the top-right
+   corner of the header, on the opposite side from the status badges. */
+.taskCard__headerRight{
+display:flex;
+align-items:flex-start;
+gap:10px;
+flex-shrink:0;
+}
+
+.taskCard__content{
+display:flex;
+flex-direction:column;
+flex:1;
+padding:20px 0 18px;
+}
+
+/* Clamped to 2 lines: a long title on a narrow column no longer wraps
+   to 3+ lines and pushes the card taller — it truncates with an
+   ellipsis instead. */
+.taskCard__content h3{
+margin:0 0 10px;
+color:var(--text);
+font-size:19px;
+font-weight:700;
+line-height:1.3;
+letter-spacing:-.03em;
+overflow-wrap:anywhere;
+display:-webkit-box;
+overflow:hidden;
+line-clamp:2;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+}
+
+.taskCard__content p{
+margin:0;
+display:-webkit-box;
+overflow:hidden;
+color:var(--text-light);
+font-size:14px;
+line-height:1.6;
+line-clamp:2;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+}
+
+/* Now holds only the project name — the date moved up to the header. */
+.taskCard__meta{
+display:flex;
+align-items:center;
+padding-top:4px;
+padding-bottom:16px;
+margin-top:auto;
+}
+
+.taskCard__project{
+display:flex;
+align-items:center;
+gap:6px;
+min-width:0;
+color:var(--text-light);
+font-size:12px;
+font-weight:600;
+}
+
+/* Due date + time, right-aligned in the header. */
+.taskCard__date{
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+flex-shrink:0;
+padding-top:2px;
+color:var(--text-light);
+font-size:11.5px;
+font-weight:600;
+line-height:1.4;
+text-align:right;
+white-space:nowrap;
+}
+
+.taskCard__time{
+color:#b0b6c3;
+font-size:10.5px;
+font-weight:500;
+}
+
+.taskCard__footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px;
+padding-top:18px;
+border-top:1px solid rgba(15,23,42,.08);
+}
+
+.taskCard__footer--compact{
+padding-top:14px;
+}
+
+/* =========================================================================
+   BADGES
+   ========================================================================= */
+
+.taskCard__statusGroup{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+gap:8px;
+min-width:0;
+}
+
+.taskCard__status,
+.taskCard__priority,
+.taskCard__category,
+.taskCard__due{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+height:28px;
+padding:0 12px;
+border-radius:999px;
+font-size:10px;
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
+white-space:nowrap;
+}
+
+.taskCard__status--active{
+background:rgba(91,92,226,.12);
+color:var(--primary);
+}
+
+.taskCard__status--completed{
+background:rgba(34,197,94,.12);
+color:#16a34a;
+}
+
+.taskCard__priority--low{
+background:#ecfdf5;
+color:#16a34a;
+}
+
+.taskCard__priority--medium{
+background:#fff7e6;
+color:#d97706;
+}
+
+.taskCard__priority--high{
+background:#fef2f2;
+color:#dc2626;
+}
+
+.taskCard__due--neutral{
+background:#f4f4f5;
+color:#52525b;
+}
+
+.taskCard__due--warning{
+background:#fff7e6;
+color:#d97706;
+}
+
+.taskCard__due--danger{
+background:#fef2f2;
+color:#dc2626;
+}
+
+.taskCard__category--project{
+background:#eef2ff;
+color:#4f46e5;
+}
+
+.taskCard__category--meeting{
+background:#fef3c7;
+color:#b45309;
+}
+
+.taskCard__category--work{
+background:#dbeafe;
+color:#2563eb;
+}
+
+.taskCard__category--study{
+background:#dcfce7;
+color:#16a34a;
+}
+
+.taskCard__category--personal{
+background:#fce7f3;
+color:#db2777;
+}
+
+.taskCard__category--shopping{
+background:#ffedd5;
+color:#ea580c;
+}
+
+.taskCard__category--health{
+background:#dcfce7;
+color:#15803d;
+}
+/* =========================================================================
+   ACTIONS
+   ========================================================================= */
+
+.taskCard__actions{
+display:flex;
+align-items:center;
+gap:10px;
+flex:1;
+}
+
+.taskCard__edit,
+.taskCard__complete,
+.taskCard__delete{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+height:40px;
+padding:0 16px;
+border-radius:12px;
+font-size:12px;
+font-weight:600;
+cursor:pointer;
+transition:
+background .2s ease,
+border-color .2s ease,
+color .2s ease,
+transform .2s ease,
+box-shadow .2s ease;
+}
+
+.taskCard__edit{
+border:1px solid rgba(91,92,226,.18);
+background:#f7f7ff;
+color:var(--primary);
+}
+
+.taskCard__edit:hover{
+background:var(--primary);
+border-color:var(--primary);
+color:#fff;
+transform:translateY(-2px);
+}
+
+.taskCard__complete{
+border:none;
+background:var(--primary);
+color:#fff;
+}
+
+.taskCard__complete:hover{
+background:var(--primary-hover);
+transform:translateY(-2px);
+box-shadow:0 10px 22px rgba(91,92,226,.25);
+}
+
+.taskCard__delete{
+margin-left:auto;
+border:1px solid rgba(239,68,68,.18);
+background:#fff;
+color:#dc2626;
+}
+
+.taskCard__delete:hover{
+background:#dc2626;
+border-color:#dc2626;
+color:#fff;
+transform:translateY(-2px);
+}
+
+.taskCard__edit:focus-visible,
+.taskCard__complete:focus-visible,
+.taskCard__delete:focus-visible,
+.taskCard__drag:focus-visible{
+outline:3px solid rgba(91,92,226,.18);
+outline-offset:2px;
+}
+
+.taskCard__completedMessage{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+height:40px;
+padding:0 16px;
+border-radius:12px;
+background:#ecfdf5;
+color:#16a34a;
+font-size:12px;
+font-weight:700;
+}
+
+/* =========================================================================
+   DRAG
+   ========================================================================= */
+
+.taskCard__drag{
+display:flex;
+align-items:center;
+justify-content:center;
+width:36px;
+height:36px;
+border:none;
+border-radius:12px;
+background:transparent;
+color:#94a3b8;
+font-size:18px;
+cursor:grab;
+transition:
+background .2s ease,
+color .2s ease,
+transform .2s ease;
+}
+
+.taskCard__drag:hover{
+background:#f3f4f6;
+color:var(--primary);
+}
+
+.taskCard__drag:active{
+cursor:grabbing;
+transform:scale(.95);
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media(max-width:900px){
+.taskCard__footer{
+flex-direction:column;
+align-items:stretch;
+}
+.taskCard__actions{
+width:100%;
+}
+.taskCard__edit,
+.taskCard__complete{
+flex:1;
+}
+.taskCard__delete{
+width:100%;
+margin-left:0;
+}
+}
+
+@media(max-width:600px){
+.taskCard{
+min-height:0;
+padding:20px;
+}
+.taskCard__content{
+padding:18px 0 16px;
+}
+.taskCard__content h3{
+font-size:18px;
+}
+.taskCard__status,
+.taskCard__priority,
+.taskCard__category,
+.taskCard__due{
+font-size:9px;
+padding:0 10px;
+height:26px;
+}
+.taskCard__headerRight{
+gap:8px;
+}
+.taskCard__date{
+font-size:10.5px;
+}
+.taskCard__time{
+font-size:9.5px;
+}
+}

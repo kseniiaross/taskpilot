@@ -1,0 +1,72 @@
+@import "./variables.css";
+
+
+@import "./pages/Overview.css";
+@import "./pages/dashboard/tasks/Tasks.css";
+@import "./pages/dashboard/calendar/Calendar.css";
+@import "./pages/dashboard/analytics/Analytics.css";
+@import "./pages/dashboard/projects/Projects.css";
+@import "./pages/dashboard/projects/ProjectDetails.css";
+@import "./WorkspaceModal.css";
+
+@import "./components/dashboard/layout/Header.css";
+@import "./components/dashboard/layout/Layout.css";
+@import "./components/dashboard/layout/Sidebar.css";
+@import "./components/dashboard/layout/Footer.css";
+
+@import "./components/dashboard/Stats.css";
+@import "./components/dashboard/tasks/TaskCard.css";
+@import "./components/dashboard/tasks/TaskGrid.css";
+@import "./components/dashboard/tasks/TaskModal.css";
+@import "./components/dashboard/tasks/TaskToolbar.css";
+
+@import "./components/dashboard/projects/ProjectCard.css";
+@import "./components/dashboard/projects/ProjectModal.css";
+
+
+@import "./Auth.css";
+@import "./DeleteAccountModal.css";
+@import "./Home.css";
+@import "./ProfileLayout.css";
+@import "./Profile.css";
+@import "./Settings.css";
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  font-family:
+    Inter,
+    system-ui,
+    sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}

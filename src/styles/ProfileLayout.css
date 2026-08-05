@@ -1,0 +1,303 @@
+/* =========================================================================
+   PROFILE / SETTINGS SHARED LAYOUT
+
+   Used by both the Profile and Settings pages, which share the same
+   card-based structure (header, back button, content card, label/value
+   rows). Page-specific styling (profile fields, danger zone, etc.)
+   lives in Profile.css / Settings.css respectively.
+   ========================================================================= */
+
+.profilePage {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.profileContainer {
+  width: min(920px, calc(100% - var(--layout-padding)));
+  margin: 0 auto;
+  padding: 48px 0 80px;
+}
+
+/* =========================================================================
+   HEADER
+   ========================================================================= */
+
+.profileHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.profileHeader > div {
+  min-width: 0;
+}
+
+.profileEyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.profileHeader h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2.25rem, 4vw, 2.625rem);
+  line-height: 1.05;
+  letter-spacing: -.04em;
+}
+
+.profileHeader p {
+  max-width: 620px;
+  margin: 12px 0 0;
+  color: var(--text-light);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.profileBackButton {
+  min-width: 190px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 24px;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.profileBackButton:hover {
+  transform: translateY(-2px);
+  background: var(--primary-hover);
+}
+
+.profileBackButton:active {
+  transform: translateY(0);
+}
+
+.profileBackButton:focus-visible {
+  outline: 3px solid rgba(91, 92, 226, .22);
+  outline-offset: 3px;
+}
+
+/* =========================================================================
+   CARD
+   ========================================================================= */
+
+.profileCard {
+  padding: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.profileContent {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================================
+   ROWS
+   ========================================================================= */
+
+.profileRow {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.profileRow:last-child {
+  border-bottom: 0;
+}
+
+.profileRow label,
+.profileRow .profileLabel {
+  width: 170px;
+  flex-shrink: 0;
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profileRow span {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.profileRow span.profileLabel {
+  flex: none;
+  width: 170px;
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.profileRow div {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media (max-width: 1600px) {
+  .profileContainer {
+    width: min(920px, calc(100% - 48px));
+  }
+}
+
+@media (max-width: 1400px) {
+  .profileContainer {
+    width: min(900px, calc(100% - 40px));
+  }
+}
+
+@media (max-width: 1200px) {
+  .profileContainer {
+    padding: 42px 0 70px;
+  }
+
+  .profileCard {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 992px) {
+  .profileHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .profileBackButton {
+    min-width: 170px;
+  }
+
+  .profileRow {
+    gap: 24px;
+  }
+
+  .profileRow label,
+  .profileRow .profileLabel {
+    width: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profileContainer {
+    width: calc(100% - 28px);
+    padding: 32px 0 52px;
+  }
+
+  .profileHeader {
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .profileHeader h1 {
+    font-size: 2.25rem;
+  }
+
+  .profileBackButton {
+    width: 100%;
+  }
+
+  .profileCard {
+    padding: 28px;
+  }
+
+  .profileRow {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profileRow label,
+  .profileRow .profileLabel {
+    width: auto;
+  }
+
+  .profileRow span,
+  .profileRow div {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileContainer {
+    width: calc(100% - 20px);
+    padding: 24px 0 40px;
+  }
+
+  .profileHeader h1 {
+    font-size: 2rem;
+  }
+
+  .profileHeader p {
+    font-size: 14px;
+  }
+
+  .profileCard {
+    padding: 22px;
+    border-radius: var(--radius-md);
+  }
+
+  .profileRow {
+    min-height: 0;
+    padding: 16px 0;
+  }
+
+  .profileRow span {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================================
+   REDUCED MOTION
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .profilePage *,
+  .profilePage *::before,
+  .profilePage *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

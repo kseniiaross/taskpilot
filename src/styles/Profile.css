@@ -1,0 +1,232 @@
+/* =========================================================================
+   PROFILE PAGE — PAGE-SPECIFIC STYLES
+
+   Shared layout (.profilePage, .profileContainer, .profileHeader,
+   .profileCard, .profileRow, .profileBackButton) lives in
+   ProfileLayout.css.
+   ========================================================================= */
+
+.profileAvatar {
+  width: 110px;
+  height: 110px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background: var(--primary);
+  color: #fff;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 16px 34px rgba(91, 92, 226, .22);
+}
+
+.profileCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* =========================================================================
+   INPUTS
+   ========================================================================= */
+
+.profileInput {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  background: #fafbff;
+  color: var(--text);
+  font-size: 15px;
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.profileInput::placeholder {
+  color: var(--text-light);
+}
+
+.profileInput:hover {
+  border-color: rgba(91, 92, 226, .24);
+}
+
+.profileInput:focus {
+  border-color: var(--primary);
+  background: var(--surface);
+  box-shadow: 0 0 0 4px rgba(91, 92, 226, .12);
+}
+
+.profileInput:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
+/* =========================================================================
+   ERROR
+   ========================================================================= */
+
+.profileError {
+  margin: 0;
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* =========================================================================
+   ACTIONS
+   ========================================================================= */
+
+.profileActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.profilePrimaryButton,
+.profileSecondaryButton,
+.profileDeleteButton {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 28px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition);
+}
+
+.profilePrimaryButton {
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+.profilePrimaryButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: var(--primary-hover);
+}
+
+.profileSecondaryButton {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.profileSecondaryButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: rgba(91, 92, 226, .24);
+  background: #f6f8fc;
+  color: var(--primary);
+}
+
+.profileDeleteButton {
+  margin-left: auto;
+  border: 1px solid rgba(239, 68, 68, .2);
+  background: rgba(239, 68, 68, .06);
+  color: var(--danger);
+}
+
+.profileDeleteButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--danger);
+  background: var(--danger);
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(239, 68, 68, .22);
+}
+
+.profilePrimaryButton:active,
+.profileSecondaryButton:active,
+.profileDeleteButton:active {
+  transform: translateY(0);
+}
+
+.profilePrimaryButton:disabled,
+.profileSecondaryButton:disabled,
+.profileDeleteButton:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.profilePrimaryButton:focus-visible,
+.profileSecondaryButton:focus-visible,
+.profileDeleteButton:focus-visible {
+  outline: 3px solid rgba(91, 92, 226, .22);
+  outline-offset: 3px;
+}
+
+.profileDeleteButton:focus-visible {
+  outline-color: rgba(239, 68, 68, .22);
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+
+@media (max-width: 1200px) {
+  .profileCard {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 992px) {
+  .profileCard {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profileCard {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .profileContent {
+    width: 100%;
+  }
+
+  .profileActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .profilePrimaryButton,
+  .profileSecondaryButton,
+  .profileDeleteButton {
+    width: 100%;
+  }
+
+  .profileDeleteButton {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileAvatar {
+    width: 92px;
+    height: 92px;
+    border-radius: var(--radius-md);
+    font-size: 28px;
+  }
+
+  .profileActions {
+    margin-top: 28px;
+  }
+}
